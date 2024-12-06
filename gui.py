@@ -1,7 +1,7 @@
 import pygame
 from renju_board import EMPTY, BLACK, WHITE
 
-# 定义颜色
+# Define the color
 BLACK_COLOR = [0, 0, 0]
 WHITE_COLOR = [255, 255, 255]
 BACKGROUND_COLOR = [125, 95, 24]
