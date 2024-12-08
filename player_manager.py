@@ -29,7 +29,8 @@ class PlayerManager:
             self.cursor.execute("UPDATE players SET wins = wins + 1 WHERE name = ?", (name,))
         elif result == "loss":
             self.cursor.execute("UPDATE players SET losses = losses + 1 WHERE name = ?", (name,))
-        self.conn.commit()  # 提交更改
+        self.conn.commit()  # Commit changes
+
 
     def get_all_players(self):
         self.cursor.execute("SELECT name, wins, losses FROM players")
