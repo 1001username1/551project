@@ -1,7 +1,21 @@
+
+
+
+
+
+
+# Author: Qianyi zhang
+# Date: 2024.11.28
+# Description: A class to prepare for the user interface, contains 3 funcs
+
+
+
+
+
 import pygame
 from renju_board import EMPTY, BLACK, WHITE
 
-# Define the color
+# define color
 BLACK_COLOR = [0, 0, 0]
 WHITE_COLOR = [255, 255, 255]
 BACKGROUND_COLOR = [125, 95, 24]
@@ -37,15 +51,12 @@ def draw_buttons(screen):
     pygame.draw.rect(screen, [0, 255, 0], [650, 120, 100, 40])
     restart_text = font.render("restart", True, [255, 255, 255])
     screen.blit(restart_text, (660, 130))
-    pygame.draw.rect(screen, [0, 0, 255], [650, 180, 100, 40])
-    pause_text = font.render("pause", True, [255, 255, 255])
-    screen.blit(pause_text, (660, 190))
-    pygame.draw.rect(screen, [255, 165, 0], [650, 240, 100, 40])
-    color_text = font.render("adjust color", True, [255, 255, 255])
-    screen.blit(color_text, (660, 250))
+    
+    
 
 
 def show_winner(screen, winner):
     font = pygame.font.SysFont(None, 48)
     text = font.render(winner, True, [255, 0, 0])
     screen.blit(text, (200, 300))
+
