@@ -1,3 +1,7 @@
+# Author: Qianyi zhang   qizhang zhu
+# Date: 2024.12.5
+# Description: use sql database to store the information of player and match history.
+
 import sqlite3
 
 class PlayerManager:
@@ -6,7 +10,7 @@ class PlayerManager:
         self.cursor = self.conn.cursor()
         self._create_table()
 
-    def _create_table(self):
+    def _create_table(self):#create a func to create a sql table, 1 primary key, and 2 keys.
         self.cursor.execute("""
             CREATE TABLE IF NOT EXISTS players (
                 name TEXT PRIMARY KEY,
@@ -16,7 +20,7 @@ class PlayerManager:
         """)
         self.conn.commit()
 
-    def add_player(self, name):
+    def add_player(self, name):# insert a new player element
         try:
             self.cursor.execute("INSERT INTO players (name, wins, losses) VALUES (?, 0, 0)", (name,))
             self.conn.commit()
@@ -24,12 +28,12 @@ class PlayerManager:
         except sqlite3.IntegrityError:
             return False
 
-    def update_score(self, name, result):
+    def update_score(self, name, result):#udpate the win/lose history
         if result == "win":
             self.cursor.execute("UPDATE players SET wins = wins + 1 WHERE name = ?", (name,))
         elif result == "loss":
             self.cursor.execute("UPDATE players SET losses = losses + 1 WHERE name = ?", (name,))
-        self.conn.commit()  # commit change
+        self.conn.commit()  
 
     def get_all_players(self):
         self.cursor.execute("SELECT name, wins, losses FROM players")
