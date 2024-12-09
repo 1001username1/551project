@@ -1,3 +1,9 @@
+# Author: Qianyi zhang   qizhangzhu
+# Date: 2024.11.29
+# Description: The judge func to calculate if black wins or not.
+
+
+
 # determine who's winner, always return false, if have a result, then return true
 class winner_checker:
     def __init__(self, board):
@@ -12,7 +18,7 @@ class winner_checker:
                 self._check_negative_diagonal(player)):
                 return f"{name} win"
         return None
-
+#check vertical direction
     def _check_vertical(self, player):
         for n in range(self.size):
             flag = 0
@@ -24,7 +30,7 @@ class winner_checker:
                 else:
                     flag = 0
         return False
-
+#check the horizontal direction
     def _check_horizontal(self, player):
         for row in self.board._board:
             flag = 0
@@ -36,7 +42,12 @@ class winner_checker:
                 else:
                     flag = 0
         return False
-
+#check the          /
+#                  /
+#                 /
+#                /
+#               /
+#                   direction
     def _check_positive_diagonal(self, player):
         for x in range(self.size * 2 - 1):
             flag = 0
@@ -48,7 +59,12 @@ class winner_checker:
                 else:
                     flag = 0
         return False
-
+#check the      \
+#                \
+#                 \
+#                  \
+#                   \
+#                   direction
     def _check_negative_diagonal(self, player):
         for x in range(-self.size + 1, self.size):
             flag = 0
